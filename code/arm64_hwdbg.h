@@ -443,7 +443,7 @@ static struct hook_entry g_debug_exception_hooks[] = {
 };
 
 // 返回地址hook 跳板
-static void __attribute__((used, __noinline__)) ret_work_finish_task_switch(void);
+void __attribute__((used, __noinline__)) ret_work_finish_task_switch(void);
 __attribute__((naked, used)) void ret_trampoline_finish_task_switch(void)
 {
     asm volatile("str x0, [sp, #8]\n"
@@ -544,7 +544,7 @@ static void clear_hwbp_regs_on_cpu(void *data)
     }
 }
 
-static void __attribute__((used, __noinline__)) ret_work_finish_task_switch(void)
+void __attribute__((used, __noinline__)) ret_work_finish_task_switch(void)
 {
     struct break_point *bp_info = g_bp_info;
 
