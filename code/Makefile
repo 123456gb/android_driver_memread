@@ -52,7 +52,7 @@ ccflags-y += -ffunction-sections -fdata-sections
 
 
 # # 强制内联: 消除函数调用 (call/ret) 和参数压栈的开销
-# ccflags-y += -finline-functions
+ccflags-y += -finline-functions
 
 
 # # 彻底关闭针对该模块的内存杀毒软件 (KASAN) 和未定义行为检查 (UBSAN)
@@ -68,16 +68,16 @@ ccflags-y += -ffunction-sections -fdata-sections
 # CFLAGS_REMOVE_lsdriver.o += $(CC_FLAGS_FTRACE)
 
 # # 强制 64 字节对齐 (适配 ARM64 的 Cache Line)用 NOP 指令填充空白，确保 CPU 抓取关键循环时绝不跨越缓存行，零等待
-# ccflags-y += -falign-functions=64
-# ccflags-y += -falign-loops=64
+ccflags-y += -falign-functions=64
+ccflags-y += -falign-loops=64
 
 
 # # 暴力循环展开与内联 (Clang 参数)
-# ccflags-y += -funroll-loops
-# ccflags-y += -finline-functions
+ccflags-y += -funroll-loops
+#ccflags-y += -finline-functions
 # # 强行拉高 LLVM 的内联和展开阈值 (让函数扁平化)
-# ccflags-y += -mllvm -inline-threshold=10000
-# ccflags-y += -mllvm -unroll-threshold=10000
+ccflags-y += -mllvm -inline-threshold=10000
+ccflags-y += -mllvm -unroll-threshold=10000
 
 
 
